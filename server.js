@@ -4,13 +4,15 @@ const OpenAI = require('openai-nodejs');
 require('dotenv').config();
 
 const app = express();
-const port = 6969;
+const port = 6968;
+const connectionString = process.env.AZURE_SERVICE_BUS_CONNECTION_STRING;
+const queueName = process.env.AZURE_QUEUE_NAME;
 const client = new OpenAI(process.env.OPENAI_API_KEY);
 
 app.use(express.json());
 
 
-// structure of the request body:
+// sample structure of the request body:
 // {
 //     "language": "Python",
 //     "code": "def add(a, b):\n    return a + b\n",
